@@ -4,11 +4,6 @@ void main() {
   String cor = "Verde e Amarela";
   String sabor = "Doce e Cítrica";
   int diasDesdeColheita = 40;
-
-  mostrarMadura(nome, diasDesdeColheita);
-  mostrarMadura1(nome, diasDesdeColheita, cor: "Laranja");
-  mostrarMadura2(nome, diasDesdeColheita, cor: "com cor");
-  mostrarMadura3(nome, diasDesdeColheita, cor: cor);
 }
 
 //Posicionais Obrigatorios
@@ -57,5 +52,33 @@ mostrarMadura3(String nome, int dias, {required String cor}){
 
   if(cor != "Sem cor"){
     print("A $nome tem a $cor");
+  }
+}
+
+//função recursiva
+
+funcRecursiva(int contador, int condicaoParada) {
+  print("Estamos a $contador iterações sem StackOverflow.");
+  if (contador >= condicaoParada) {
+    return;
+  }
+  funcRecursiva(contador + 1, condicaoParada);
+}
+
+//classe - objeto
+class Fruta {
+  String nome;
+  double peso;
+  String cor;
+  String sabor;
+  int diasDesdeColheita;
+  bool? isMadura;
+
+  Fruta(this.nome, this.peso,this.cor,this.sabor,this.diasDesdeColheita);
+  
+  void estaMAdura(int diasParaMadura){
+    isMadura = diasDesdeColheita >= diasParaMadura;
+    print("A sua $nome foi colhida a $diasDesdeColheita dias, e precisa de $diasParaMadura, para poder comer. Ela está madura? $isMadura");
+
   }
 }
